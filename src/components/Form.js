@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Form.css';
+import ReactJson from 'react-json-view';
 
-const Form = ({ onSubmit, handleChange, URL }) => {
+const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody }) => {
   return (
     <>
-      <section className='deck'>
-        <form className={styles.Form} onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
+        <section className={styles.deck}>
           <input
             type='text'
             onChange={handleChange}
@@ -17,7 +18,12 @@ const Form = ({ onSubmit, handleChange, URL }) => {
           />
           <div id='methods'>
             <label>
-              <input type='radio' onChange={handleChange} name='method' value='get' />
+              <input
+                type='radio'
+                onChange={handleChange}
+                name='method'
+                value='GET'
+              />
               <span>GET</span>
             </label>
             <label>
@@ -25,12 +31,17 @@ const Form = ({ onSubmit, handleChange, URL }) => {
                 type='radio'
                 onChange={handleChange}
                 name='method'
-                value='post'
+                value='POST'
               />
               <span>POST</span>
             </label>
             <label>
-              <input type='radio' onChange={handleChange} name='method' value='put' />
+              <input
+                type='radio'
+                onChange={handleChange}
+                name='method'
+                value='PUT'
+              />
               <span>PUT</span>
             </label>
             <label>
@@ -38,7 +49,7 @@ const Form = ({ onSubmit, handleChange, URL }) => {
                 type='radio'
                 onChange={handleChange}
                 name='method'
-                value='patch'
+                value='PATCH'
               />
               <span>PATCH</span>
             </label>
@@ -47,7 +58,7 @@ const Form = ({ onSubmit, handleChange, URL }) => {
                 type='radio'
                 onChange={handleChange}
                 name='method'
-                value='delete'
+                value='DELETE'
               />
               <span>DELETE</span>
             </label>
@@ -55,16 +66,28 @@ const Form = ({ onSubmit, handleChange, URL }) => {
               <button type='submit'>Go!</button>
             </label>
           </div>
-        </form>
-      </section>
-    </> 
+        </section>
+        <section className={styles.deck_2}>
+          <textarea
+            placeholder='Raw JSON body'
+            name='reqBody'
+            value={reqBody}
+            onChange={handleChange}
+          ></textarea>
+        </section>
+        <section>
+          <ReactJson src={resBody} />
+        </section>
+      </form>
+    </>
   );
-  
 };
 Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
-  URL: PropTypes.string.isRequired
+  URL: PropTypes.string.isRequired,
+  resBody: PropTypes.object.isRequired,
+  reqBody: PropTypes.string.isRequired
 };
 
 export default Form;
