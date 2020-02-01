@@ -1,28 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import HistoryItem from './HistoryItem';
+import styles from './HistoryList.css';
 
-const HistoryList = ({ historyList, onClick }) => {
+const HistoryList = ({ historyList }) => {
   const renderHistoryItems = historyList.map((historyItem, i) => {
     <li key={i}>
-      <HistoryItem
-        method={historyItem.method}
-        reqBody={historyItem.reqBody}
-        URL={historyItem.URL}
-        onClick={onClick}
-      />
+      <HistoryItem method={historyItem.method} URL={historyItem.URL} />
     </li>;
   });
   return <ul>{renderHistoryItems}</ul>;
 };
 HistoryList.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  historyList: PropTypes.arrayOf(
-    PropTypes.shape({
-      method: PropTypes.string.isRequired,
-      URL: PropTypes.string.isRequired,
-      reqBody: PropTypes.string.isRequired
-    })
-  )
+  historyList: PropTypes.array.isRequired
 };
 export default HistoryList;

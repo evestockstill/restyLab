@@ -8,8 +8,8 @@ export default class Resty extends Component {
     URL: '',
     method: '',
     resBody: [],
-    reqBody: '',
-    historyList: [],
+    request: [],
+    userJson: '',
     password: '',
     userName: '',
     bearerToken: ''
@@ -19,25 +19,42 @@ export default class Resty extends Component {
     event.preventDefault();
 
     const { URL, method } = this.state;
-
     getResponse(URL, method).then(res => this.setState({ resBody: res }));
+    return this.setState (prevState => ({
+      ...prevState,
+      request: [...prevState.request, {
+        method,
+        URL
+      }
+
+      ]
+    }));
   };
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
   };
 
-  
-
   render() {
-    const { URL, resBody, reqBody, password, userName, method, bearerToken } = this.state;
+    const {
+      URL,
+      resBody,
+      userJson,
+      password,
+      userName,
+      method,
+      request,
+      bearerToken
+    } = this.state;
     return (
       <>
-        
-        <Form 
+        <div>
+          <HistoryList historyList={request} />
+        </div>
+        <Form
           URL={URL}
           resBody={resBody}
-          reqBody={reqBody}
+          userJson={userJson}
           password={password}
           userName={userName}
           onChange={this.handleChange}
@@ -45,7 +62,6 @@ export default class Resty extends Component {
           method={method}
           bearerToken={bearerToken}
         />
-       
       </>
     );
   }
