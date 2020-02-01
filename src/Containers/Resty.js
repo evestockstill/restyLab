@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Form from '../components/Form/Form';
-import Button from '../components/common/Button'
-import RadioButtons from '../components/common/RadioButtons';
 import { getResponse } from '../services/apiService';
 
 export default class Resty extends Component {
@@ -25,26 +23,17 @@ export default class Resty extends Component {
   };
 
   render() {
-    const { URL, resBody, reqBody, method } = this.state;
-    const radioButtons = [
-      { label: 'Get', value: 'GET' },
-      { label: 'POST', value: 'POST' },
-      { label: 'PUT', value: 'PUT' },
-      { label: 'PATCH', value: 'PATCH' },
-      { label: 'DELETE', value: 'DELETE' }
-    ];
+    const { URL, resBody, reqBody } = this.state;
     return (
       <>
         
-        <Form>
-          <RadioButtons radioButtons={radioButtons} name={method} onChange={this.handleChange} />
+        <Form 
           URL={URL}
-          <Button text="Go" onClick={getResponse} />
           resBody={resBody}
           reqBody={reqBody}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
-        </Form>
+        />
        
       </>
     );
