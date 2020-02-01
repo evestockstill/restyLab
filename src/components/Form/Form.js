@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styles from './Form.css';
 import ReactJson from 'react-json-view';
 
-const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody, method, userName, password, bearerToken }) => (
+const Form = ({ onSubmit, onChange, URL, resBody, reqBody, method, userName, password, bearerToken }) => (
   
-  <form onSubmit={handleSubmit}>
+  <form onSubmit={onSubmit}>
     <input 
       type='text'
-      onChange={handleChange}
+      onChange={onChange}
       className={styles.wide}
       name='URL'
       placeholder='URL'
@@ -18,7 +18,7 @@ const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody, method, userN
       <label>
         <input 
           type='radio'
-          onChange={handleChange}
+          onChange={onChange}
           name='method'
           checked={method === 'GET'}
           value='GET'
@@ -28,7 +28,7 @@ const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody, method, userN
       <label>
         <input
           type='radio'
-          onChange={handleChange}
+          onChange={onChange}
           name='method'
           checked={method === 'POST'}
           value='POST'
@@ -38,7 +38,7 @@ const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody, method, userN
       <label>
         <input 
           type='radio'
-          onChange={handleChange}
+          onChange={onChange}
           name='method'
           checked={method === 'PUT'}
           value='PUT'
@@ -48,7 +48,7 @@ const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody, method, userN
       <label>
         <input
           type='radio'
-          onChange={handleChange}
+          onChange={onChange}
           name='method'
           checked={method === 'PATCH'}
           value='PATCH'
@@ -58,7 +58,7 @@ const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody, method, userN
       <label>
         <input
           type='radio'
-          onChange={handleChange}
+          onChange={onChange}
           name='method'
           checked={method === 'DELETE'}
           value='DELETE'
@@ -73,14 +73,14 @@ const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody, method, userN
         type="text"
         placeholder='Raw JSON body'
         value={reqBody}
-        onChange={handleChange}
+        onChange={onChange}
       ></textarea>
       <section className={styles.auth}>
         <h3>Basic Authorization</h3>
-        <input type="text" placeholder="Username" value={userName} name="userName" onChange={handleChange} />
-        <input type="text" placeholder="Password" value={password} name="password" onChange={handleChange} />
+        <input type="text" placeholder="Username" value={userName} name="userName" onChange={onChange} />
+        <input type="text" placeholder="Password" value={password} name="password" onChange={onChange} />
         <h2>Bearer Token</h2>
-        <input type="text" placeholder="Bearer Token" value={bearerToken} name="bearerToken" onChange={handleChange} />
+        <input type="text" placeholder="Bearer Token" value={bearerToken} name="bearerToken" onChange={onChange} />
         <section>
           <ReactJson src={resBody} />
         </section>
@@ -90,8 +90,8 @@ const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody, method, userN
 );
 
 Form.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   URL: PropTypes.string.isRequired,
   resBody: PropTypes.array.isRequired,
   reqBody: PropTypes.string.isRequired,
