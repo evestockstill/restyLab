@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styles from './Form.css';
 import ReactJson from 'react-json-view';
 
-const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody }) => {
+const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody, name, label, value }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
         <section className={styles.deck}>
-          <input
+          <input 
             type='text'
             onChange={handleChange}
             className={styles.wide}
@@ -18,10 +18,11 @@ const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody }) => {
           />
           <div id='methods'>
             <label>
-              <input
+              <input id={value}
                 type='radio'
                 onChange={handleChange}
                 name='method'
+                checked={method}
                 value='GET'
               />
               <span>GET</span>
@@ -36,7 +37,7 @@ const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody }) => {
               <span>POST</span>
             </label>
             <label>
-              <input
+              <input id={value}
                 type='radio'
                 onChange={handleChange}
                 name='method'
@@ -87,7 +88,10 @@ Form.propTypes = {
   handleChange: PropTypes.func.isRequired,
   URL: PropTypes.string.isRequired,
   resBody: PropTypes.array.isRequired,
-  reqBody: PropTypes.string.isRequired
+  reqBody: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 };
 
 export default Form;

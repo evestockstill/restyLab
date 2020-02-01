@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Form from '../components/Form';
-import styles from '../components/Form.css';
+import Form from '../components/Form/Form';
+import styles from '../components/Form/Form.css';
 import { getResponse } from '../services/apiService';
 
 export default class Resty extends Component {
