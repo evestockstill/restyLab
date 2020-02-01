@@ -3,93 +3,102 @@ import PropTypes from 'prop-types';
 import styles from './Form.css';
 import ReactJson from 'react-json-view';
 
-const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody }) => {
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <section className={styles.deck}>
-          <input 
-            type='text'
-            onChange={handleChange}
-            className={styles.wide}
-            name='URL'
-            placeholder='URL'
-            value={URL}
-          />
-          <div id='methods'>
-            <label>
-              <input 
-                type='radio'
-                onChange={handleChange}
-                name='method'
-              
-                value='GET'
-              />
-              <span>GET</span>
-            </label>
-            <label>
-              <input
-                type='radio'
-                onChange={handleChange}
-                name='method'
-                value='POST'
-              />
-              <span>POST</span>
-            </label>
-            <label>
-              <input 
-                type='radio'
-                onChange={handleChange}
-                name='method'
-                value='PUT'
-              />
-              <span>PUT</span>
-            </label>
-            <label>
-              <input
-                type='radio'
-                onChange={handleChange}
-                name='method'
-                value='PATCH'
-              />
-              <span>PATCH</span>
-            </label>
-            <label>
-              <input
-                type='radio'
-                onChange={handleChange}
-                name='method'
-                value='DELETE'
-              />
-              <span>DELETE</span>
-            </label>
-            <label>
-              <button type='submit'>Go!</button>
-            </label>
-          </div>
-        </section>
-        <section className={styles.deck_2}>
-          <textarea
-            placeholder='Raw JSON body'
-            name='reqBody'
-            value={reqBody}
-            onChange={handleChange}
-          ></textarea>
-        </section>
+const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody, method, userName, password, bearerToken }) => (
+  
+  <form onSubmit={handleSubmit}>
+    <input 
+      type='text'
+      onChange={handleChange}
+      className={styles.wide}
+      name='URL'
+      placeholder='URL'
+      value={URL}
+    />
+    <section className={styles.radio}>
+      <label>
+        <input 
+          type='radio'
+          onChange={handleChange}
+          name='method'
+          checked={method === 'GET'}
+          value='GET'
+        />
+        <span>GET</span>
+      </label>
+      <label>
+        <input
+          type='radio'
+          onChange={handleChange}
+          name='method'
+          checked={method === 'POST'}
+          value='POST'
+        />
+        <span>POST</span>
+      </label>
+      <label>
+        <input 
+          type='radio'
+          onChange={handleChange}
+          name='method'
+          checked={method === 'PUT'}
+          value='PUT'
+        />
+        <span>PUT</span>
+      </label>
+      <label>
+        <input
+          type='radio'
+          onChange={handleChange}
+          name='method'
+          checked={method === 'PATCH'}
+          value='PATCH'
+        />
+        <span>PATCH</span>
+      </label>
+      <label>
+        <input
+          type='radio'
+          onChange={handleChange}
+          name='method'
+          checked={method === 'DELETE'}
+          value='DELETE'
+        />
+        <span>DELETE</span>
+      </label>
+      <button type='submit'>Go!</button>
+    </section>
+    <section className={styles.deck_2}>
+      <textarea 
+        name='reqBody'
+        type="text"
+        placeholder='Raw JSON body'
+        value={reqBody}
+        onChange={handleChange}
+      ></textarea>
+      <section className={styles.auth}>
+        <h3>Basic Authorization</h3>
+        <input type="text" placeholder="Username" value={userName} name="userName" onChange={handleChange} />
+        <input type="text" placeholder="Password" value={password} name="password" onChange={handleChange} />
+        <h2>Bearer Token</h2>
+        <input type="text" placeholder="Bearer Token" value={bearerToken} name="bearerToken" onChange={handleChange} />
         <section>
           <ReactJson src={resBody} />
         </section>
-      </form>
-    </>
-  );
-};
+      </section>
+    </section>
+  </form>
+);
+
 Form.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   URL: PropTypes.string.isRequired,
   resBody: PropTypes.array.isRequired,
-  reqBody: PropTypes.string.isRequired
-  
+  reqBody: PropTypes.string.isRequired,
+  method: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
+  bearerToken: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired
 };
 
 export default Form;

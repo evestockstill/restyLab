@@ -31,8 +31,8 @@ export default class Resty extends Component {
           URL={URL}
           resBody={resBody}
           reqBody={reqBody}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
         />
        
       </>
