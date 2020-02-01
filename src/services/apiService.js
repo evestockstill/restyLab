@@ -1,13 +1,2 @@
-// export const getResponse = (uri = '', method = '') =>
-//   fetch(uri, { method }).then(res => res.json());
-export const getQuote = () => {
-  return fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes/1')
-    .then(res => res.json())
-    .then(([text]) => ({
-      text,
-      img:
-        'https://www.boredteachers.com/wp-content/uploads/2018/02/Ron_Swanson_Teacher_Life_cover_Bored_Teachers.jpeg'
-    }));
-};
-
-
+export const getResponse = (uri = '', method = '') =>
+  fetch(uri, { method }).then(res => res.json());
