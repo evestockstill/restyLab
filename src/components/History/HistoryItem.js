@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import History from './History';
 import styles from './HistoryItem.css';
 
-const History = ({ method, URL, onClick, reqBody }) => {
+const HistoryItem = ({ method, URL, onClick, reqBody }) => {
   return (
     <section onClick={() => onClick(method, URL, onClick, reqBody)}>
       <h3 className={styles.method}>{method}</h3>
@@ -11,7 +10,7 @@ const History = ({ method, URL, onClick, reqBody }) => {
     </section>
   );
 };
-History.propTypes = {
+HistoryItem.propTypes = {
   reqBody: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   URL: PropTypes.string.isRequired,

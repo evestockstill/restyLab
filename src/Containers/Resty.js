@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from '../components/Form/Form';
+import HistoryList from '../components/History/HistoryList';
 import { getResponse } from '../services/apiService';
 
 export default class Resty extends Component {
@@ -7,7 +8,11 @@ export default class Resty extends Component {
     URL: '',
     method: '',
     resBody: [],
-    reqBody: ''
+    reqBody: '',
+    historyList: [],
+    password: '',
+    userName: '',
+    bearerToken: ''
   };
 
   handleSubmit = event => {
@@ -22,8 +27,10 @@ export default class Resty extends Component {
     this.setState({ [target.name]: target.value });
   };
 
+  
+
   render() {
-    const { URL, resBody, reqBody } = this.state;
+    const { URL, resBody, reqBody, password, userName, method, bearerToken } = this.state;
     return (
       <>
         
@@ -31,8 +38,12 @@ export default class Resty extends Component {
           URL={URL}
           resBody={resBody}
           reqBody={reqBody}
+          password={password}
+          userName={userName}
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
+          method={method}
+          bearerToken={bearerToken}
         />
        
       </>
