@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styles from './Form.css';
 import ReactJson from 'react-json-view';
 
-const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody, value }) => {
+const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
         <section className={styles.deck}>
-          <input
+          <input 
             type='text'
             onChange={handleChange}
             className={styles.wide}
@@ -17,55 +17,51 @@ const Form = ({ handleSubmit, handleChange, URL, resBody, reqBody, value }) => {
             value={URL}
           />
           <div id='methods'>
-            <label id='GET'>
-              <input
-                id={value}
+            <label>
+              <input 
                 type='radio'
                 onChange={handleChange}
                 name='method'
-                checked={name}
+              
                 value='GET'
               />
+              <span>GET</span>
             </label>
-            <label id='POST'>
+            <label>
               <input
-                id={value}
                 type='radio'
                 onChange={handleChange}
-                checked={name}
                 name='method'
                 value='POST'
               />
+              <span>POST</span>
             </label>
-            <label id='PUT'>
-              <input
-                id={value}
+            <label>
+              <input 
                 type='radio'
                 onChange={handleChange}
-                checked={name}
                 name='method'
                 value='PUT'
               />
+              <span>PUT</span>
             </label>
-            <label id='PATCH'>
+            <label>
               <input
-                id={value}
                 type='radio'
                 onChange={handleChange}
-                checked={name}
                 name='method'
                 value='PATCH'
               />
+              <span>PATCH</span>
             </label>
-            <label id='DELETE'>
+            <label>
               <input
-                id={value}
                 type='radio'
                 onChange={handleChange}
-                checked={name}
                 name='method'
                 value='DELETE'
               />
+              <span>DELETE</span>
             </label>
             <label>
               <button type='submit'>Go!</button>
@@ -92,8 +88,8 @@ Form.propTypes = {
   handleChange: PropTypes.func.isRequired,
   URL: PropTypes.string.isRequired,
   resBody: PropTypes.array.isRequired,
-  reqBody: PropTypes.string.isRequired,
- 
+  reqBody: PropTypes.string.isRequired
+  
 };
 
 export default Form;
