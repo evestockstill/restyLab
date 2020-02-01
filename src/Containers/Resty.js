@@ -7,7 +7,7 @@ export default class Resty extends Component {
   state = {
     URL: '',
     method: '',
-    resBody: {},
+    resBody: [],
     reqBody: ''
   };
 

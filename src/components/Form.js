@@ -86,7 +86,7 @@ Form.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   URL: PropTypes.string.isRequired,
-  resBody: PropTypes.object.isRequired,
+  resBody: PropTypes.array.isRequired,
   reqBody: PropTypes.string.isRequired
 };
 
