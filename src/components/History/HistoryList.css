@@ -2,4 +2,11 @@ ul {
     height: 700px;
     width: 700px;
     background: red;
+  
+  li {
+    list-style: none;
+    background-color: #c5c5c5;
+    padding: .5rem;
+    margin: .5rem;
+  }
 }

@@ -5,8 +5,10 @@ import styles from './HistoryItem.css';
 const HistoryItem = ({ method, URL }) => {
   return (
     <>
-      <h3 className={styles.method}>{method}</h3>
-      <p>{URL}</p>
+      <section className={styles.history}>
+        <h3 className={styles.method}>{method}</h3>
+        <p>{URL}</p>
+      </section>
     </>
   );
 };

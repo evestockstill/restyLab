@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import HistoryItem from './HistoryItem';
-import styles from './HistoryList.css';
 
 const HistoryList = ({ historyList }) => {
   const renderHistoryItems = historyList.map((historyItem, i) => {
